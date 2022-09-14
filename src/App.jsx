@@ -5,8 +5,6 @@ import Singupp from "./componet/sing up/Singup";
 import Table from "./componet/table/Table";
 
 function App() {
-
-
   return (
     <div className="main">
       <h1>Welcome to Dungan FOOD!</h1>
@@ -43,7 +41,7 @@ function About() {
   return (
     <div className="main">
       <main>
-      <Table></Table>
+        <Table></Table>
       </main>
       <nav>
         <Link to="/" className="menu">

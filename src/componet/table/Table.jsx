@@ -2,9 +2,9 @@ import "./Table.css";
 import { useState } from "react";
 
 const products = [
-  { name: "Lagman (Boso,Guro):", price: 180 },
-  { name: "Pelmeni:", price: 180 },
-  { name: "Soup:", price: 180 },
+  { name: "Lagman (Boso,Guro):", price: 180, discription: "meat, spices,muka" },
+  { name: "Pelmeni:", price: 180, discription: "meat, spices,muka" },
+  { name: "Soup:", price: 180, discription: "meat, spices,muka" },
   { name: "Manty:", price: 200 },
   { name: "Plov:", price: 220 },
   { name: "Kotleta:", price: 180 },
@@ -17,12 +17,16 @@ const products = [
 const Table = () => {
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState("");
-
+  const [sub, setSub] = useState(false);
   const handleShow = () => {
     setShow(!show);
   };
   const handleSearch = (e) => {
     setSearch(e.target.value);
+  };
+
+  const handleSub = () => {
+    setSub(!sub);
   };
   console.log(show);
   const filtered = products.filter((item) =>
@@ -42,14 +46,19 @@ const Table = () => {
         />
       </div>
 
-      <div id="menu">
-        {filtered.map((item) => (
-          <div className="product">
-            <div>{item.name}</div>
-            <div>{item.price}</div>
-          </div>
-        ))}
-      </div>
+      {show && (
+        <div id="menu">
+          {filtered.map((item) => (
+            <div className="product">
+              <div onClick={handleSub} className="product-sub">
+                {item.name}
+              </div>
+              {sub && <div className="product-sub">{item.discription}</div>}
+              <div className="product-sub">{item.price}</div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
